@@ -1,0 +1,6 @@
+.div{
+    display:block;
+}
+.form-field, .mat-raised-button{
+    margin-left: 10px;
+}

@@ -1,0 +1,33 @@
+<div class="example-container">
+    <div class="form-container">
+      <form [formGroup]="loginForm" (submit)="submit()">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Company Name
+          </mat-label>
+          <input matInput formControlName="companyName">
+          <mat-error *ngIf="loginForm.controls.companyName.touched && loginForm.controls.companyName.invalid">
+            <span *ngIf="loginForm.controls.companyName.errors.required">This field is mandatory.</span>
+            <span *ngIf="loginForm.controls.companyName.errors.pattern">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Phone Number
+          </mat-label>
+          <input matInput formControlName="phone" type="number">
+          <mat-error *ngIf="loginForm.controls.phone.touched && loginForm.controls.phone.invalid">
+            <span *ngIf="loginForm.controls.phone.errors.required">This field is mandatory.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Address
+          </mat-label>
+          <input matInput formControlName="address">
+          <mat-error *ngIf="loginForm.controls.address.touched && loginForm.controls.address.invalid">
+            <span *ngIf="loginForm.controls.address.errors.required">This field is mandatory.</span>
+            <span *ngIf="loginForm.controls.address.errors.pattern">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,24 @@
+.form-field{
+    display: block;
+    width: 25%;
+}
+
+.bill_row{
+  padding-left: 8px;
+}
+
+.btn_bill_row {
+  margin-top: 12px;
+}
+
+.example-container {
+  padding-left: 8px;
+}
+
+.error {
+  background-color: coral;
+}
+
+.row {
+  margin-right: 0px;
+}

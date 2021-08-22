@@ -1,0 +1,30 @@
+<div class="example-container">
+    <div class="form-container">
+        <form [formGroup]="dialogForm" (submit)="submit()">
+            <div>
+            <mat-form-field *ngIf="flag" class="form-field" appearance="outline">
+                <mat-label> Customer Id
+                </mat-label>
+                <input matInput formControlName="id" [(ngModel)]="id" value="id">
+            </mat-form-field>
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label> Payment Amount
+                </mat-label>
+                <input matInput type="number" formControlName="payment" (change)="updateBalance()">
+            </mat-form-field>
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label> Payment Type
+                </mat-label>
+                <input matInput formControlName="paymentType">
+            </mat-form-field>
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label> Total Pending Amount
+                </mat-label>
+                <input matInput formControlName="pending" [(ngModel)]="pending" value="pending">
+            </mat-form-field>
+        </div>
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+            <button mat-raised-button mat-dialog-close>Cancel</button>
+        </form>
+    </div>
+</div>

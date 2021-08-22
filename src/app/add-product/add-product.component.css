@@ -1,0 +1,12 @@
+.form-field{
+    display: block;
+    width: 25%;
+}
+
+.btn_bill_row {
+    margin-top: 12px;
+  }
+
+  .bill_row {
+    margin-left: 8px;
+  }

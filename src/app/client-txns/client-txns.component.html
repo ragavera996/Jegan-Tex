@@ -1,0 +1,107 @@
+
+<br>
+<div class="p-8">
+    <button class="btn btn-primary" (click)="reload()"> 
+        <mat-icon>arrow_back</mat-icon>Back</button>
+<button class="btn btn-danger" printSectionId="temp_id" styleSheetFile="assets/bootstrap.min.css" ngxPrint> 
+    <mat-icon>print</mat-icon> Print</button>
+<div class="container bootdey" id="temp_id">
+    <style>
+    
+        .address{
+            padding-left: 28px !important;
+        }
+        </style>
+  <div class="row invoice row-printable">
+      <div class="col-md-12">
+          <!-- col-lg-12 start here -->
+          <div class="panel panel-default plain" id="dash_0">
+              <!-- Start .panel -->
+              <div class="panel-body p30">
+                <div class="text-center">
+                    <h2>Transactions</h2>
+                </div>
+                  <div class="row">
+                      <!-- Start .row -->
+                    <div class="col-lg-6">
+                        <!-- col-lg-6 start here -->
+                        <div class="invoice-logo"><img width="150" height="100" src="assets/logo.png" alt="Invoice logo"></div>
+                    </div>
+
+                     <!-- col-lg-6 end here -->
+                     <div class="col-lg-6">
+                        <!-- col-lg-6 start here -->
+                        <div class="invoice-from">
+                            <ul class="list-unstyled text-left">
+                                <li>Pro: K.Jeganathan</li>
+                                <li>2/193-E, Indira Nagar (North),</li>
+                                <li>4A Chettipalayam, Angeripalayam Post,</li>
+                                <li>Tirupur, Tamil Nadu - 641 603</li>
+                                <li>Cell : 94437 62574, 84893 40674</li>
+                            </ul>
+                        </div>
+                    </div>
+                      <!-- col-lg-6 end here -->
+                      <div class="col-lg-12">
+                          <!-- col-lg-12 start here -->
+                          <div class="invoice-details mt25">
+                              <div class="well">
+                                  <ul class="list-unstyled mb0">
+                                      <li><strong>Customer Name: </strong> {{templateData.length > 0 ? templateData[0].company_name : ''}}</li>
+                                      <li><strong>Transactions from : </strong>{{templateData.length > 0 ? templateData[0].transactionFrom : ''}} to {{templateData.length > 0 ? templateData[0].transactionTo : ''}}</li>
+                                      <li><strong>Total Debits:</strong> ₹.{{templateData.length > 0 ? templateData[0].debitTotal : ''}}</li>
+                                      <li><strong>Total Credits:</strong> ₹.{{templateData.length > 0 ? templateData[0].creditTotal : ''}}</li>
+                                      <li><strong>Total Balance:</strong> ₹.{{templateData.length > 0 ? templateData[0].debitTotal - templateData[0].creditTotal : ''}}</li>
+                                  </ul>
+                              </div>
+                          </div>
+                          <div class="invoice-items">
+                              <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="0">
+                                  <table class="table table-bordered">
+                                      <thead>
+                                          <tr>
+                                              <th class="per30 text-center">Date</th>
+                                              <th class="per5 text-center">Particulars</th>
+                                              <th class="per5 text-center">Type</th>
+                                              <th class="per25 text-center">Debits</th>
+                                              <th class="per25 text-center">Credits</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr *ngFor="let row of templateData; let i = index" >
+                                              <td class="text-center">{{templateData.length > 0 ? templateData[i].date : ''}}</td>
+                                              <td class="text-center">{{templateData.length > 0 ? '[ OG Bill:' + templateData[i].original_bill_number + '] - ' + '₹.' + templateData[i].original_bill_amount + '/ [ DB Bill:' + templateData[i].duplicate_bill_number + '] - ' + '₹.' + (templateData[i].duplicate_bill_amount - templateData[i].original_bill_amount + templateData[i].tax): ''}}</td>
+                                              <td class="text-center">{{templateData.length > 0 ? templateData[i].payment_type : ''}}</td>
+                                              <td class="text-center">₹.{{templateData.length > 0 ? templateData[i].debit : ''}}</td>
+                                              <td class="text-center">₹.{{templateData.length > 0 ? templateData[i].credit : ''}}</td>
+                                          </tr>
+                                      </tbody>
+                                      <tfoot>
+                                          <tr>
+                                              <th colspan="3" class="text-right">Total:</th>
+                                              <th class="text-center">₹.{{templateData.length > 0 ? templateData[0].debitTotal : ''}}</th>
+                                              <th class="text-center">₹.{{templateData.length > 0 ? templateData[0].creditTotal : ''}}</th>
+                                          </tr>
+                                          <tr>
+                                            <th colspan="3" class="text-right">Balance:</th>
+                                            <th colspan="2" class="text-center">₹.{{templateData.length > 0 ? templateData[0].debitTotal - templateData[0].creditTotal : ''}}</th>
+                                          </tr>
+                                      </tfoot>
+                                  </table>
+                              </div>
+                          </div>
+                          <div class="invoice-footer mt25">
+                            <p class="text-center"> E-mail : jegantex001@gmail.com   Website : www.jegantex.com</p>
+                        </div>
+                      </div>
+                      <!-- col-lg-12 end here -->
+                  </div>
+                  <!-- End .row -->
+              </div>
+          </div>
+          <!-- End .panel -->
+      </div>
+      <!-- col-lg-12 end here -->
+  </div>
+</div>
+</div>

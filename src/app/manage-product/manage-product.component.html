@@ -1,0 +1,44 @@
+<div class="example-container">
+  <div class="pb-10">
+    <button mat-raised-button color="success" type="button" (click)="openEditDialog('','','','','')">
+        <mat-icon>add</mat-icon>
+        Add Product
+      </button>
+    </div>
+<div class="mat-elevation-z8">
+  <mat-table mat-table [dataSource]="productData" matSort>
+    <ng-container matColumnDef="productId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Product Id</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.productId}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="productPriceId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>psId</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.productPriceId}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="product_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.product_name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="size">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Size</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.size}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.price}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button
+          (click)="openEditDialog(row.productId, row.product_name, row.size, row.price, row.productPriceId)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+</div>
+</div>

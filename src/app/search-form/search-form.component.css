@@ -1,0 +1,23 @@
+.example-container{
+    padding: 20px;
+}
+
+mat-footer-row mat-footer-cell{
+    justify-content: center;
+    font-style: italic;
+}
+
+table {
+    width: 100%;
+  }
+
+.pb-10 {
+      padding-bottom: 10px;
+  }
+
+.mat-raised-button.mat-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+
+}

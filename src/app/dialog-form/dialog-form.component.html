@@ -1,0 +1,36 @@
+<div class="example-container">
+    <div class="form-container">
+      <form [formGroup]="dialogForm" (submit)="submit()">
+        <div *ngIf="newDialog">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Customer Id
+            </mat-label>
+            <input matInput formControlName="customerId" [(ngModel)]="id" value="id">
+          </mat-form-field>
+        </div>
+        <div>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Company Name
+          </mat-label>
+          <input matInput formControlName="companyName" [(ngModel)]="name" value="name">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Address
+          </mat-label>
+          <input matInput formControlName="address" [(ngModel)]="address" value="address">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Phone
+          </mat-label>
+          <input matInput formControlName="phone" [(ngModel)]="phone" value="phone">
+        </mat-form-field>
+      </div>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button mat-dialog-close >Cancel</button>
+      </form>
+    </div>
+  </div>

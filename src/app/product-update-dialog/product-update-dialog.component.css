@@ -1,0 +1,9 @@
+.div{
+    display:block;
+}
+.form-field, .mat-raised-button{
+    margin-left: 10px;
+}
+.btn_bill_row {
+    margin-top: 12px;
+  }

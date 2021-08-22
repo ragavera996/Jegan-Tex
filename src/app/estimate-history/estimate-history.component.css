@@ -1,0 +1,19 @@
+.example-container{
+    padding: 20px;
+  }
+  mat-footer-row mat-footer-cell{
+    justify-content: center;
+    font-style: italic;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  div{
+      display:block;
+  }
+  
+  .p-8 {
+    padding: 8px;
+  }

@@ -1,0 +1,45 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.padding_20 {
+  padding: 20px;
+}
+
+tr.mat-footer-row {
+  font-weight: bold;
+}
+
+div{
+  display:block;
+}
+
+.bill_header {
+  display:inline-flex;
+}
+
+.search_btn {
+    height: 45px;
+    margin-top: 6px;
+    margin: 8px;
+    width: 100%;
+}
+
+.pay_btn {
+  height: 45px;
+  margin-top: 6px;
+  margin: 8px;
+}
+
+h4{
+  margin-top: 15px;
+}
+
+.p-8 {
+  margin-left: 8px;
+}

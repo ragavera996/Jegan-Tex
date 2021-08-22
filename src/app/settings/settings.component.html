@@ -1,0 +1,25 @@
+<h4>Enter GST percentage: {{ gstNumber }} %</h4>
+
+<mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Gst</mat-label>
+    <input id="gst-input" matInput #gst>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="button" (click)="addGst(gst.value)">Submit</button>
+
+  <h4> Enter Size: </h4>
+
+  <mat-form-field class="example-chip-list" appearance="fill">
+    <mat-label>Enter Sizes</mat-label>
+    <mat-chip-list #chipList aria-label="Size selection">
+      <mat-chip *ngFor="let size of sizes" [selectable]="selectable"
+               [removable]="removable" (removed)="remove(size)">
+        {{size.name}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input placeholder="New size..."
+             [matChipInputFor]="chipList"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             [matChipInputAddOnBlur]="addOnBlur"
+             (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+  </mat-form-field>

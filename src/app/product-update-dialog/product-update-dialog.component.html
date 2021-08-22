@@ -1,0 +1,84 @@
+<div class="example-container">
+    <div *ngIf="newDialog" class="form-container">
+      <form [formGroup]="dialogForm" (submit)="submit()">
+        <div>
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Product Id
+            </mat-label>
+            <input matInput formControlName="productId" [(ngModel)]="id" value="id">
+          </mat-form-field>
+        </div>
+        <div> 
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Product Price Id
+            </mat-label>
+            <input matInput formControlName="productPriceId" [(ngModel)]="psId" value="psId">
+          </mat-form-field>
+        </div>
+        <div>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Product Name
+          </mat-label>
+          <input matInput formControlName="productName" [(ngModel)]="name" value="name">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Size
+          </mat-label>
+          <input matInput formControlName="size" [(ngModel)]="size" value="size">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Price
+          </mat-label>
+          <input matInput formControlName="price" [(ngModel)]="price" value="price">
+        </mat-form-field>
+      </div>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button mat-dialog-close >Cancel</button>
+      </form>
+    </div>
+    <div *ngIf="!newDialog">
+      <form [formGroup]="productForm" (submit)="submit()">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Product Name
+          </mat-label>
+          <input matInput formControlName="productName">
+        </mat-form-field>
+        <div formArrayName="productItems" *ngFor="let item of productForm.get('productItems')['controls']; let i = index;">
+        <div [formGroupName]="i" class="row">
+        <div class="col-4">
+          <mat-form-field class="form-field w-100" appearance="outline">
+            <mat-label> Size
+            </mat-label>
+            <input matInput formControlName="size">
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field class="form-field w-100" appearance="outline">
+            <mat-label> Price
+            </mat-label>
+            <input matInput formControlName="price" type="number">
+          </mat-form-field>
+        </div>
+          <div *ngIf="i+1 === productForm.get('productItems')['length']" class="example-button-container bill_row">
+            <button type="button" mat-mini-fab class="btn_bill_row" color="primary" (click)="addItem()"
+              aria-label="Example icon button with a menu icon">
+              <mat-icon>add_icon</mat-icon>
+            </button>
+          </div>
+          <div *ngIf="(!(i === 0)) || productForm.get('productItems')['length'] > 1" class="example-button-container bill_row">
+            <button type="button" mat-mini-fab class="btn_bill_row" color="warn" (click)="deleteItem(i)"
+              aria-label="Example icon button with a menu icon">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button mat-dialog-close >Cancel</button>
+      </form>
+    </div>
+  </div>

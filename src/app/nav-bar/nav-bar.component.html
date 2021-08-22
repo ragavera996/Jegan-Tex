@@ -1,0 +1,48 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="jegantex">
+        <mat-icon>note_add</mat-icon>
+         Add Invoice</a>
+      <a mat-list-item routerLink="billHistory">
+        <mat-icon>history</mat-icon>
+        Invoice History</a>
+      <a mat-list-item routerLink="paymentHistory">
+        <mat-icon>payment</mat-icon>
+        Payments History</a>
+      <a mat-list-item routerLink="totalPayments">
+        <mat-icon>account_balance_wallet</mat-icon>
+        Total Payments</a>
+      <a mat-list-item routerLink="manageCustomers">
+        <mat-icon>supervised_user_circle</mat-icon>
+        Customers</a>
+      <a mat-list-item routerLink="manageProducts">
+        <mat-icon>store</mat-icon>
+        Products</a>
+        <a mat-list-item routerLink="addEstimate">
+          <mat-icon>note_add</mat-icon>
+          Add Estimate</a>
+          <a mat-list-item routerLink="estimateHistory">
+            <mat-icon>history</mat-icon>
+            Estimate History</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Jegan Tex</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,148 @@
+<div *ngIf="showTemplate">
+    <app-transactions [templateData]=template_list></app-transactions>
+  </div>
+<div *ngIf="!showTemplate">
+  <div class="example-container">
+    <div *ngIf="mainFlag" class="form-container">
+      <form [formGroup]="billForm" (submit)="submit()">
+        <h5>Estimate Info :</h5>
+        <div class="row">
+          <div class="col-2">
+          <mat-form-field class="form-field w-100" appearance="outline">
+            <mat-label> Estimate Number
+            </mat-label>
+            <input formControlName="billNumb" matInput>
+          </mat-form-field>
+        </div>
+        <div class="col-2">
+          <mat-form-field class="form-field w-100" appearance="outline">
+            <mat-label> Estimate Date
+            </mat-label>
+            <input formControlName="billDate" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        </div>
+        <h5>Company Info :</h5>
+        <div class="row">
+          <div class="col-3">
+            <mat-form-field class="w-100" appearance="outline">
+              <input type="text" placeholder="Company Name" aria-label="Company Name" matInput [formControl]="myControl"
+                [matAutocomplete]="auto2" (change)="handleEmptyInput($event)">
+              <mat-autocomplete formControlname="autoComplete" #auto2="matAutocomplete" [displayWith]="displayFn"
+              (optionSelected)="updateCompanyInfo($event)">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{ option.name }}
+                </mat-option>
+              </mat-autocomplete>
+      
+              <mat-error *ngFor="let validation of validation_msgs.myControl">
+                <div *ngIf="myControl.hasError(validation.type)">
+                  {{validation.message}}
+                </div>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-form-field class="form-field w-100" appearance="outline">
+              <mat-label> Address
+              </mat-label>
+              <input matInput formControlName="address">
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-form-field class="form-field w-100" appearance="outline">
+              <mat-label> Phone Number
+              </mat-label>
+              <input matInput formControlName="phone">
+            </mat-form-field>
+          </div>
+        </div>
+        <h5>Product Info :</h5>
+        <div formArrayName="billItems" *ngFor="let item of billForm.get('billItems')['controls']; let i = index;">
+          <div [formGroupName]="i" class="row">
+            <div class="col-2">
+            <mat-form-field class="form-field w-100" appearance="outline">
+              <mat-label>Select Product</mat-label>
+              <mat-select formControlName="product" (selectionChange)="enableSize(i)">
+                <mat-option *ngFor="let product of product_list" [value]="product">
+                  {{product.product_name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-form-field class="form-field w-100" appearance="outline">
+            <mat-label>Select Size</mat-label>
+              <mat-select formControlName="size" (selectionChange)="enableQuantity(i)">
+                <mat-option *ngFor="let size of filtered_size_list[i]" [value]="size">
+                  {{size.size}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-form-field class="form-field w-100" appearance="outline">
+              <mat-label> Quantity
+              </mat-label>
+              <input matInput formControlName="quantity" (change)="calcPrice(i)">
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-form-field class="form-field w-100" appearance="outline">
+              <mat-label> Rate
+              </mat-label>
+              <input matInput formControlName="rate" type="number">
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-form-field class="form-field w-100" appearance="outline">
+              <mat-label> Price
+              </mat-label>
+              <input matInput formControlName="price">
+            </mat-form-field>
+          </div>
+            <div *ngIf="i+1 === billForm.get('billItems')['length']" class="example-button-container bill_row">
+              <button type="button" mat-mini-fab class="btn_bill_row" color="primary" (click)="addItem()"
+                aria-label="Example icon button with a menu icon">
+                <mat-icon>add_icon</mat-icon>
+              </button>
+            </div>
+            <div *ngIf="(!(i === 0)) || billForm.get('billItems')['length'] > 1" class="example-button-container bill_row">
+              <button type="button" mat-mini-fab class="btn_bill_row" color="warn" (click)="deleteItem(i)"
+                aria-label="Example icon button with a menu icon">
+                <mat-icon>delete_outline</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        <h5>Total Info : </h5>
+        <div class="row">
+        <div class="col-2">
+          <mat-form-field class="form-field w-100" appearance="outline">
+            <mat-label> GST
+            </mat-label>
+            <input matInput formControlName="gst" (change)="calcTotal()">
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field class="form-field w-100" appearance="fill">
+            <mat-label> Duplicate Bill Total
+            </mat-label>
+            <input matInput formControlName="duplicateTotal">
+          </mat-form-field>
+        </div>
+        <div class="col-2">
+          <mat-form-field class="form-field w-100" appearance="fill">
+            <mat-label> Bill Total
+            </mat-label>
+            <input matInput formControlName="total">
+          </mat-form-field>
+        </div>
+      </div>
+      <button mat-raised-button color="primary" type="submit">Generate Estimate</button>
+    </form>
+    <button *ngIf="reloadFlag" mat-raised-button color="warn" type="button" (click)="reload()">Reload</button>
+  </div>
+  </div>
