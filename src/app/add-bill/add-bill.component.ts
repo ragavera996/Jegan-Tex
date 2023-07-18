@@ -53,7 +53,7 @@ export class AddBillComponent implements OnInit {
   template_list: any;
   showTemplate: boolean = false;
   auto: any;
-  totalAmount: number = 0;
+  totalAmount: number = 1;
   totalPending: number = 0;
   public myControl = new FormControl('', 
       { validators: [autocompleteObjectValidator(), Validators.required] })
